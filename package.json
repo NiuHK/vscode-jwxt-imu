@@ -1,0 +1,131 @@
+{
+  "name": "jwxt",
+  "displayName": "jwxt-imu",
+  "description": "jwxt of imu ",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "jwxt.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "jwxt.login",
+        "title": "Login",
+        "icon": "$(sign-in)"
+      },
+      {
+        "command": "jwxt.viewCookies",
+        "title": "View Cookies"
+      },
+      {
+        "command": "jwxt.getScores",
+        "title": "RefResh Scores",
+        "icon": "$(extensions-refresh)"
+      },
+      {
+        "command": "jwxt.checkLogin",
+        "title": "Check Login",
+        "icon": "$(account)"
+      },
+      {
+        "command": "jwxt.setCredentials",
+        "title": "Set Credentials",
+        "icon": "$(settings-gear)"
+      },
+      {
+        "command": "jwxt.updateSchedule",
+        "title": "Update Schedule",
+        "icon": "$(extensions-refresh)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "jwxtContainer",
+          "title": "JWXT",
+          "icon": "resources/jwxt-icon.svg",
+          "command": "jwxt.viewCookies"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "jwxt.login",
+          "when": "view == personalInfoView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "jwxt.checkLogin",
+          "when": "view == personalInfoView",
+          "group": "navigation@2"
+        },
+        {
+          "command": "jwxt.setCredentials",
+          "when": "view == personalInfoView",
+          "group": "navigation@3"
+        },
+        {
+          "command": "jwxt.updateSchedule",
+          "when": "view == scheduleView",
+          "group": "navigation"
+        },
+        {
+          "command": "jwxt.getScores",
+          "when": "view == gradesView",
+          "group": "navigation"
+        }
+      ]
+    },
+    "views": {
+      "jwxtContainer": [
+        {
+          "id": "personalInfoView",
+          "name": "个人信息"
+        },
+        {
+          "id": "scheduleView",
+          "name": "课表"
+        },
+        {
+          "id": "gradesView",
+          "name": "成绩"
+        },
+        {
+          "id": "announcementsView",
+          "name": "公告"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.96.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.19.0"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "puppeteer": "^24.1.1"
+  },
+  "enabledApiProposals": [
+    "contribViewContainerTitle"
+  ]
+}
